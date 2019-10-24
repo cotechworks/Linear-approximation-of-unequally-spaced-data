@@ -3,10 +3,7 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) { 
-	// int argcã¯å¼•æ•°ã®å€‹æ•° char *argv[]ã¯å¼•æ•°ã®æ–‡å­—åˆ—ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿å‹é…åˆ—
-	
-	//ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã®ç¢ºèª
-	printf("%s\n", argv[1]);
+	// int argc‚Íˆø”‚ÌŒÂ” char *argv[]‚Íˆø”‚Ì•¶š—ñ‚ğw‚·ƒ|ƒCƒ“ƒ^Œ^”z—ñ
 	
 	FILE *fp1,*fp2;
 	int n,i,j,k;
@@ -29,11 +26,11 @@ int main(int argc, char *argv[]) {
     	return -1;
   	}
 	
-	//åˆ†å‰²æ•°
-	printf("ãƒ‡ãƒ¼ã‚¿ã‚’ä½•ç­‰åˆ†ã™ã‚‹ã‹ã‚’å…¥åŠ›\n");
+	//•ªŠ„”
+	printf("•ÏŠ·Œã‚Ìƒf[ƒ^”‚ğ“ü—Í\n");
 	scanf("%d", &n);
 	
-	//ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
+	//ƒf[ƒ^“Ç‚İ‚İ
 	j=0;
 	for(i=0; i<20000; i++){
 		if(fscanf(fp1, "%lf,%lf", &data1[i], &data2[i]) != EOF){
@@ -47,7 +44,7 @@ int main(int argc, char *argv[]) {
 		data3[i] = (double)i * (double)x_max / (double)n;
 	}
 	
-	//1æ¬¡è£œé–“
+	//1Ÿ•âŠÔ
 	k=0;
 	for(i=0; i<=n; i++){
 		if(i==0){
@@ -61,13 +58,15 @@ int main(int argc, char *argv[]) {
 			
 			fprintf(fp2, "%.16lf,%.16lf\n", data3[i], data4[i]);
 		}else if(i==n){
-			data4[n] = data2[n];
+			A = (data2[j] - data2[j-1]) / (data1[j] - data1[j-1]);
+			data4[i] = A * (data3[i] - data1[j-1]) + data2[j-1];
+			fprintf(fp2, "%.16lf,%.16lf\n", data3[i], data4[i]);
 		}else{
-			printf("å‡¦ç†ã‚¨ãƒ©ãƒ¼");
+			printf("ˆ—ƒGƒ‰[");
 		}
 	}
 	
-	//ãƒ‡ãƒ¼ã‚¿å‡ºåŠ›
+	//ƒf[ƒ^o—Í
 	for(i=0; i<=n; i++){
 		
 	}
@@ -75,9 +74,9 @@ int main(int argc, char *argv[]) {
 	fclose(fp1);
 	fclose(fp2);
 	
-	//ä»»æ„ã®ã‚­ãƒ¼å…¥åŠ›ã§çµ‚äº†
-	printf("\n");
-	system("pause"); 
+	//”CˆÓ‚ÌƒL[“ü—Í‚ÅI—¹
+	//printf("\n");
+	//system("pause"); 
 	return 0;
 	
 }
